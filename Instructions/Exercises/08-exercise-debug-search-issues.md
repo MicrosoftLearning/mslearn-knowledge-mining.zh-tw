@@ -117,7 +117,7 @@ lab:
 1. 現在您需要確定您的技能集已連結至 Azure AI 服務資源，否則您會達到基本配額且索引子會逾時。 若要執行此操作，請在左窗格中選取 [技能集]****，然後選取您的 [hotels-sample-skillset]****。
 
     ![顯示技能集清單的螢幕擷取畫面。](../media/08-media/update-skillset.png)
-1. 選取 [連線 AI 服務]****，然後選取清單中的 AI 服務資源。
+1. 選取 **[連線 AI 服務]**，然後選取清單中的 AI 服務資源。
 
     ![顯示要連結至技能集的 Azure AI 服務資源螢幕擷取畫面。](../media/08-media/skillset-attach-service.png)
 1. 選取 [儲存]。
@@ -126,5 +126,6 @@ lab:
 
     ![顯示問題已解決的螢幕擷取畫面。](../media/08-media/warnings-fixed-indexer.png)
 
-> [!TIP]
-> 完成練習之後，如果您已完成探索 Azure AI 搜尋服務，請刪除您在練習中建立的 Azure 資源。 最簡單的方式是刪除 **acs-cognitive-search-exercise** 資源群組。
+### 清理
+
+ 完成練習之後，如果您已完成探索 Azure AI 搜尋服務，請刪除您在練習中建立的 Azure 資源。 最簡單的方式是刪除 **acs-cognitive-search-exercise** 資源群組。

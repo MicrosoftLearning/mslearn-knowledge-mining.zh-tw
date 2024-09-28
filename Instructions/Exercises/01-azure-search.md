@@ -56,7 +56,7 @@ lab:
     - **儲存體帳戶名稱**：*輸入唯一名稱*
     - **區域**：*選擇任何可用的區域*
     - **效能**：標準
-    - **複寫**：本地備援儲存體 (LRS)
+    - **備援**：[本地備援儲存體 (LRS)]
     - 在 [進階]**** 索引標籤上，核取 [允許在個別容器上啟用匿名存取]** 旁的方塊
 2. 等候部署完成，然後移至資源。
 3. 在 [概觀]**** 頁面上，請記住**訂用帳戶識別碼**，這可用於識別佈建儲存體帳戶的訂用帳戶。
@@ -231,7 +231,7 @@ lab:
 1. 在Azure 入口網站中，返回 Azure AI 搜尋服務資源的 [概觀]**** 頁面；然後在頁面頂端的區段中，尋找資源的 **URL**(看起來像是 **https://resource_name.search.windows.net**)，然後將其複製到剪貼簿。
 2. 在 Visual Studio Code [檔案總管] 窗格中，展開 [01-azure-search]**** 資料夾及其 [modify-search]**** 子資料夾，然後選取 [modify-search.cmd]**** 加以開啟。 您將使用此指令檔來執行將 JSON 提交至 Azure AI 服務 REST 介面的 *cURL* 命令。
 3. 在 **modify-search.cmd** 中，將 **YOUR_SEARCH_URL** 預留位置取代為您複製到剪貼簿的 URL。
-4. 在Azure 入口網站中，檢視 Azure AI 搜尋服務資源的 [金鑰]**** 頁面，並將 [主要管理金鑰]**** 複製到剪貼簿。
+4. 在 Azure 入口網站的 [設定]**** 區段中，檢視 Azure AI 搜尋服務資源的 [金鑰]**** 頁面，並將 [主要管理金鑰]**** 複製到剪貼簿。
 5. 在 Visual Studio Code 中將 **YOUR_ADMIN_KEY** 預留位置取代為您複製到剪貼簿的金鑰。
 6. 將變更儲存至 **modify-search.cmd** (但不要執行！)
 
@@ -239,7 +239,7 @@ lab:
 
 1. 在 Visual Studio Code 的 **modify-search** 資料夾中，開啟 **skillset.json**。 這會顯示 **margies-skillset** 的 JSON 定義。
 2. 在技能定義頂端，請注意 **cognitiveServices** 物件，該物件是用來將 Azure AI 服務資源連線到技能。
-3. 在 Azure 入口網站中，開啟您的 Azure AI 服務資源 (<u>並非</u>您的 Azure AI 搜尋服務資源！) 並檢視其 [金鑰]**** 頁面。 然後將 [金鑰 1]**** 複製到剪貼簿。
+3. 在 Azure 入口網站中，開啟您的 Azure AI 服務資源 (並<u>非</u> Azure AI 搜尋服務資源！) 並在 [資源管理]**** 區段中，檢視其 [金鑰與端點]**** 頁面。 然後將 [金鑰 1]**** 複製到剪貼簿。
 4. 在 Visual Studio Code 的 **skillset.json** 中，將 **YOUR_COGNITIVE_SERVICES_KEY** 預留位置取代為您複製到剪貼簿的 Azure AI 服務金鑰。
 5. 捲動 JSON 檔案，指出該檔案包含您在 Azure 入口網站中使用 Azure AI 搜尋服務使用者介面所建立技能的定義。 在技能清單底部，已使用下列定義新增額外的技能：
 
@@ -375,13 +375,13 @@ lab:
     **C#**
 
     ```
-    dotnet add package Azure.Search.Documents --version 11.1.1
+    dotnet add package Azure.Search.Documents --version 11.6.0
     ```
 
     **Python**
 
     ```
-    pip install azure-search-documents==11.0.0
+    pip install azure-search-documents==11.5.1
     ```
 
 3. 檢視 **margies-travel** 資料夾的內容，並注意其中包含組態設定的檔案：
@@ -461,7 +461,7 @@ Web 應用程式已經包含用來處理和轉譯搜尋結果的程式碼。
     - **莫哈韋沙漠** (觀察到此詞彙組在部分文件中識別為*位置*)。
 10. 關閉包含 Margie's Travel 網站的瀏覽器索引標籤，並返回 Visual Studio Code。 然後在 **margies-travel** 資料夾的 Python 終端機中 (終端機上正在執行 dotnet 或 flask 應用程式)，輸入 Ctrl+C 以停止應用程式。
 
-## 刪除練習資源
+## 清理
 
 您已完成練習，請刪除所有不再需要的資源。 刪除 Azure 資源:
 
