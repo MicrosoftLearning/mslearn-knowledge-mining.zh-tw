@@ -15,7 +15,7 @@ lab:
 
 開始使用偵錯工作階段之前，請先建立 Azure 認知搜尋服務。
 
-1. [將資源部署至 Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-search-knowledge-mining%2Fmain%2Fazuredeploy.json) - 選取此連結，將所有需要的資源部署至 Azure 入口網站。
+1. [將資源部署至 Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F08-debug-search%2Fazuredeploy.json) - 選取此連結，將所有需要的資源部署至 Azure 入口網站。
 
     ![欄位已輸入的 ARM 部署範本螢幕擷取畫面。](../media/08-media/arm-template-deployment.png)
 
