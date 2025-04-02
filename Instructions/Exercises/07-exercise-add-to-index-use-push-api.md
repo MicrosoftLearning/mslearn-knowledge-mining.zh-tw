@@ -35,20 +35,47 @@ lab:
     ![搜尋服務金鑰區段的螢幕擷取畫面。](../media/07-media/search-api-keys-exercise-version.png)
 1. 在左側，選取 [金鑰]****，然後將**主要系統管理金鑰**複製到相同的文字檔中。
 
-## 下載 Visual Studio Code 中使用的範例程式碼
+## 請在 Cloud Shell 中複製存放庫
 
-您將使用 Visual Studio Code 執行 Azure 範例程式碼。 程式碼檔案已在 GitHub 存放庫中提供。
+您將可使用 Azure 入口網站中的 Cloud Shell，開發程式碼。 您應用程式的程式碼檔案已在 GitHub 存放庫中提供。
 
-1. 啟動 Visual Studio Code。
-1. 開啟選擇區 (SHIFT+CTRL+P) 並執行 **Git：複製 ** 命令，將 `https://github.com/MicrosoftLearning/mslearn-knowledge-mining` 存放庫複製到本機資料夾 (哪個資料夾無關緊要)。
-1. 複製存放庫後，請在 Visual Studio Code 中開啟此資料夾。
-1. 等候其他檔案安裝以支援存放庫中的 C# 程式碼專案。
+> **提示**：如果您最近已複製 **mslearn-knowledge-mining** 存放庫，可以跳過這項工作。 否則，請遵循下列步驟將其複製到您的開發環境。
 
-    > **注意**：如果系統提示您新增必要的資產來組建和偵錯，請選取 [現在不要]****。
+1. 使用頁面上方搜尋欄右側的 [\>_]**** 按鈕，即可到 Azure 入口網站上，建立新的 Cloud Shell，選取 [PowerShell]****** 環境。 Cloud Shell 會在 Azure 入口網站底部的窗格顯示命令列介面。
 
-1. 在左側導覽中，展開 **optimize-data-indexing/v11/OptimizeDataIndexing** 資料夾，然後選取 **appsettings.json** 檔案。
+    > **注意**：如果您之前建立了使用 *Bash* 環境的 Cloud Shell，請將其切換到 ***PowerShell***。
+
+1. 在 Cloud Shell 工具列中，在**設定**功能表中，選擇**轉到經典版本**（這是使用程式碼編輯器所必需的）。
+
+    > **提示**：當您將命令貼到 Cloud Shell 中時，輸出可能會佔用大量的螢幕緩衝區。 您可以透過輸入 `cls` 命令來清除螢幕，以便更輕鬆地專注於每個工作。
+
+1. 在 PowerShell 窗格中，輸入以下命令來複製此練習的 GitHub 存放庫：
+
+    ```
+    rm -r mslearn-knowledge-mining -f
+    git clone https://github.com/microsoftlearning/mslearn-knowledge-mining mslearn-knowledge-mining
+    ```
+
+1. 複製存放庫之後，瀏覽至包含應用程式碼檔案的資料夾：  
+
+    ```
+   cd mslearn-knowledge-mining/Labfiles/07-exercise-add-to-index-use-push-api/OptimizeDataIndexing
+    ```
+
+## 設定您的應用程式
+
+1. 您只要使用`ls`命令，就可以檢視 OptimizeDataIndexing** 資料夾的內容**。 請注意，其中還包含`appsettings.json`組態設定的檔案。
+
+1. 輸入以下命令，編輯已提供的設定檔：
+
+    ```
+   code appsettings.json
+    ```
+
+    程式碼編輯器中會開啟檔案。
 
     ![顯示 appsettings.json 檔案內容的螢幕擷取畫面。](../media/07-media/update-app-settings.png)
+
 1. 貼上您的搜尋服務名稱和主要管理金鑰。
 
     ```json
@@ -60,30 +87,40 @@ lab:
     ```
 
     設定檔案看起來應該會像上面這樣。
-1. 按 **CTRL + S** 儲存變更。
-1. 以滑鼠右鍵按一下 **OptimizeDataIndexing** 資料夾，然後選取 [在整合式終端中開啟]****。
+   
+1. 取代預留位置後，使用 **CTRL+S** 命令儲存變更，然後使用 **CTRL+Q** 命令關閉程式碼編輯器，同時保持 Cloud Shell 命令列開啟。
 1. 在終端中，輸入 `dotnet run`，然後按 **Enter**。
 
     ![顯示應用程式在 VS Code 中執行但出現例外狀況的螢幕擷取畫面。](../media/07-media/debug-application.png)
-輸出內容會顯示在此情況下，最佳效能的批次大小是 900 份文件。 每秒達到 6.071 MB 時。
+
+    輸出內容會顯示以下案例中，最佳效能的批次大小大約是 900 份文件，最高傳輸速率為（MB/秒）。
+   
+    >**備註**：傳輸速率的數值可能和螢幕擷取畫面中顯示的數值不太一樣。 然而，表現最佳的批量大小應該都差不多。 
 
 ## 編輯程式碼以實作執行緒和輪詢並重試策略
 
 程式碼已加上註解，可讓應用程式變更為使用執行緒將文件上傳至搜尋索引。
 
-1. 請確定您已選取 **Program.cs**。
+1. 輸入以下命令，即可開啟用戶端應用程式的程式碼檔案：
 
-    ![顯示 Program.cs 檔案的 VS Code 螢幕擷取畫面。](../media/07-media/edit-program-code.png)
-1. 將第 37 行和 38 行註解如下：
+    ```
+   code Program.cs
+    ```
+
+1. 將第 38 行和 39 行註解如下：
 
     ```csharp
     //Console.WriteLine("{0}", "Finding optimal batch size...\n");
     //await TestBatchSizesAsync(searchClient, numTries: 3);
     ```
 
-1. 取消註解第 44 到 48 行。
+1. 取消註解第 41 到 49 行。
 
     ```csharp
+    long numDocuments = 100000;
+    DataGenerator dg = new DataGenerator();
+    List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
+
     Console.WriteLine("{0}", "Uploading using exponential backoff...\n");
     await ExponentialBackoff.IndexDataAsync(searchClient, hotels, 1000, 8);
 
@@ -94,9 +131,10 @@ lab:
     控制批次大小和執行緒數目的程式碼為 `await ExponentialBackoff.IndexDataAsync(searchClient, hotels, 1000, 8)`。 批次大小為 1000，且執行緒為 8。
 
     ![顯示所有已編輯程式碼的螢幕擷取畫面。](../media/07-media/thread-code-ready.png)
+
     您的程式碼看起來應會如上所示。
 
-1. 若要儲存變更，請按 **Ctrl**+**S**。
+1. 儲存您的變更。
 1. 選取您的終端，然後按下任何按鍵以結束執行中的程序 (如果您尚未結束)。
 1. 在終端中執行 `dotnet run`。
 
