@@ -83,35 +83,35 @@ Azure 入口網站假設文件中的第一個欄位必須翻譯。 因此，它�
 
 1. 在頁面頂端，選取搜尋服務，**advanced-search-service-12345 | 索引**連結。
 1. 在左窗格的 [搜尋管理] 底下選取 [技能]****，然後選取 [hotels-sample-skillset]****。
-1. 編輯 JSON 文件，將第 11 行變更為:
+1. 編輯 JSON 文件，將第 9 行變更為:
 
     ```json
     "context": "/document/Description",
     ```
 
-1. 將第 12 行的預設值從語言變更為英文:
+1. 將第 11 行的預設值從語言變更為英文:
 
     ```json
     "defaultFromLanguageCode": "en",
     ```
 
-1. 將第 18 行上的來源欄位變更為:
+1. 將第 15 行上的來源欄位變更為：
 
     ```json
-    "source": "/document/Description"
+    "source": "/document/Description",
     ```
 
-1. 選取 [儲存]。
+1. 選取**儲存**。
 1. 在頁面頂端，選取搜尋服務，**advanced-search-service-12345 | 技能**連結。
 1. 在 **[概觀]** 窗格中，選取 **[索引子]**，然後選取 **[hotels-sample-indexer]**。
-1. 選取 [索引子定義 (JSON)]。****
-1. 將第 21 行上的來源欄位名稱變更為:
+1. 選取 [編輯 JSON]****。
+1. 將第 20 行上的來源欄位名稱變更為:
 
     ```json
     "sourceFieldName": "/document/Description/Description_pt",
     ```
 
-1. 選取 [儲存]。
+1. 選取**儲存**。
 1. 選取 [重設]****，然後選取 [是]****。
 1. 選取 [執行]****，然後選取 [是]****。
 
