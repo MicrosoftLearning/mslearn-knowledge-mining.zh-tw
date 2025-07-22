@@ -15,7 +15,7 @@ lab:
 
 若要節省時間，請選取此 Azure Resource Manager 範本，建立在稍後練習中所需的資源：
 
-1. [將資源部署至 Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F07-exercise-add-to-index-use-push-api%20lab-files%2Fazuredeploy.json) - 選取此連結以建立您的 Azure AI 資源。
+1. [將資源部署至 Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F07-exercise-add-to-index-use-push-api%2Fazuredeploy.json) - 選取此連結以建立您的 Azure AI 資源。
     ![部署資源至 Azure 時，顯示選項的螢幕擷取畫面。](../media/07-media/deploy-azure-resources.png)
 1. 在 [資源群組] 中，選取 [新建]，將群組命名為 **cog-search-language-exe**。********
 1. 在 [區域]**** 中，選取靠近您的[支援區域](/azure/ai-services/language-service/custom-text-classification/service-limits#regional-availability)。
